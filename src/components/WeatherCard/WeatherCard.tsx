@@ -2,6 +2,7 @@ import React, { FC, useEffect, useState } from 'react';
 import './WeatherCard.scss';
 import weatherService from '../../services/weather.service';
 import { WeatherModel } from '../../models/weatherModel.model';
+
 interface WeatherCardProps {
   cityName: string;
 }
@@ -33,18 +34,22 @@ const WeatherCard = (props: WeatherCardProps) => {
       getWeatherByCity();
     }, [props.cityName]);
 
-    return <div className="WeatherCard">
-    <h2>{props.cityName}</h2>
-    {weather ? (
-      <div>
-        <p>תיאור: {weather.description}</p>
-        <p>טמפ' נמדדת: {weather.feels_like}C</p> 
-        <p>טמפ' מורגשת: {weather.feels_like}C</p> 
-        <p>לחות: {weather.humidity}%</p>
+    return (
+      <div className="WeatherCard card">
+        <div className="card-body">
+          <h2 className="card-title">{props.cityName}</h2>
+          {weather ? (
+            <div dir="rtl">
+              <p className="card-text"> {weather.description}</p>
+              <h3 className="card-text">טמפ' נמדדת: {weather.temp}°C</h3>
+              <h3 className="card-text">טמפ' מורגשת: {weather.feels_like}°C</h3>
+              <h3 className="card-text">לחות: {weather.humidity}%</h3>
+            </div>
+          ) : (
+            <p>Loading...</p>
+          )}
+        </div>
       </div>
-    ) : (
-      <p></p>
-    )}
-  </div>
+    );
   }
   export default WeatherCard;

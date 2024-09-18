@@ -12,12 +12,16 @@ const Home = () => {
   
   return <div className="Home">
 
-    <h1>מזג האוויר בערים</h1>
-    <div className="WeatherCardsContainer">
+<div className="Home container">
+      <h1>תחזית מסביב לעולם  </h1>
+      <div className="row">
         {cities.map((city, index) => (
-          <WeatherCard key={index} cityName={city} />
+          <div key={index} className="col-md-6 mb-4">
+            <WeatherCard cityName={city} />
+          </div>
         ))}
       </div>
+    </div>
   </div>
 }
 
