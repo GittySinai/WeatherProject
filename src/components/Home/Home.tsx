@@ -9,6 +9,7 @@ const Home = () => {
     "Eilat", "London", "New York", "Alaska"
   ]);
 
+  
   return <div className="Home">
 
     <h1>מזג האוויר בערים</h1>
